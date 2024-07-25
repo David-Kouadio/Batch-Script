@@ -1,0 +1,251 @@
+Aprender batch, web (HTML, CSS), c, c++, c#, JavaScript.
+1- C++
+2- HTML/CSS
+3- JavaScript
+4- Batch
+5- C/C#
+
+
+
+~~~~~~~~~~~~~~Comandos~~~~~~~~~~~~~~~
+
+CLS - Clear Screen - Limpa a tela dos comandos.
+
+ECHO - Escreve coisas na tela.
+    echo - verifica se o ECHO está ativo.
+    echo off - Desativa a reposta do sistema.
+    echo on - Liga o ECHO
+
+Vol - Descreve o volume de armazenamento do sistema (HD/SSD).
+    vol C: - Propriedades do C:
+
+Ver - Versão do sistema.
+
+Clip - Ctrl + C do CMD.
+    textos | clip = Ctrl + C dos textos.
+
+Date - Verifica/Muda a data do sistema.
+    date - alterar a data.
+    date /t - mostra a atual data.
+
+Time - mesma coisa que o Date, mas é com horas.
+    time - altera as horas.
+    time /t - mostra as horas atuais.
+
+Start - inicia um programa do sistema.
+ start www.google.com.br/ - abre esse site.
+
+Winver - Mostra a versão do windows.
+
+Exit - Fecha o CMD.
+
+Doskey - permite criar macros.
+    macro - Macros são atalhos dentro do CMD para abrir outras coisas do sitema.
+
+
+~~~~~~~~~~~~~~Personalização~~~~~~~~~~~~~~~
+
+Title - Muda o titulo do CMD.
+
+Color - Muda a cor do CMD.
+    color /? - mostra a tabela de cores.
+    color 20 - primeiro nº background e segundo nº letras.
+    color - volta pro original
+
+Mode - Define o tamanho da tela.
+    mode 200 - faz o CMD ter 200 de largura.
+    mode /status - dá as informações da janela do CMD.
+    mode 100,40 - faz o CMD ter 100 de largura e 40 linhas.
+
+Prompt - Altera as coisas que vão aparecer antes dos caracteres escritos.
+    prompt /? - tabela do prompt.
+    prompt - reseta os valores pro padrão,
+
+
+~~~~~~~~~~~~~~ATALHOS DE TECLAS~~~~~~~~~~~~~~~
+
+Teclas pra cima,baixo - navegam entre os comandos.
+
+ESC - Apaga a linha de codigo.
+
+F7 - Abre o historico de comandos.
+
+Alt + F7 - Apaga o historico de comandos.
+
+F8 - Pesquisar no historico de comandos.
+
+F9 - Seleciona o comando via numeros.
+
+Alt + F10 - Limpa as definições de macro.
+
+
+~~~~~~~~~~~~~~Gerenciamento de Arquivos~~~~~~~~~~~~~~~
+
+DIR - Diretorio - mostra na tela oq tem na pasta atual.
+        dir - mostra tudo oq tem dentro da minha pasta.
+
+CD - Navega entre as pastas do DIR.
+    cd.. - recua uma pasta.
+    cd C:\Users\DAVIDFRANCOBOTIKOUAD - vai direto pra pasta.
+    /cd - volta pra pasta raiz.
+
+Path - Define qual o meio que o CMD vai buscar coisas.
+
+MD - cria pastas.
+    md aquivo - criou uma pasta chamada arquivo.
+    rd - exclui uma pasta.
+
+Rename (Ren) - Renomeia um arquivo/pasta.
+    cd %userprofile%\desktop - (%userprofile% = variavel).
+        rename "arquivoQualquer.exe" arquivoSSS.exe - renomeia o arquivo para o nome após aspas
+
+Copy - Copia arquivos.
+    copy arquivoSSS.exe C:\arquivo - copiou o arquivo pra pasta arquivo.
+    copy arquivoSSS.exe C:\arquivo\arquivoSSS-2 - copiou o arquivo com um novo nome pra pasta arquivo.
+
+Replace - Substitui um arquivo.
+    replace arquivoSSS.exe C:\arquivo - substitui o arquivo.
+
+Del - Deleta um arquivo.
+    del arquivoSSS.exe - deleta o arquivo.
+    rmdir /s arquivo - deleta a pasta juntos dos arquivos. (rmdir = del)
+
+Move - Move os arquivos.
+    cd %userprofile%\desktop - vai direto pra area de trabalho.
+    move arquivoSSS.exe C:\arquivo - move o arquivo da area de trabalho para a pasta arquivo.
+
+Attrib - altera os atributos de um arquivo.
+    attrib arquivoSSS - mostra o atributo do arquivo.
+    attrib arquivoSSS +r - adiciona o atributo de só leitura no arquivo. (pode por varios atributos)
+    attrib arquivoSSS -r - remove o atributo de só leitura no arquivo. (pode por varios atributos)
+
+Pause - pausa a tela.
+
+
+~~~~~~~~~~~~~~Variaveis~~~~~~~~~~~~~~~
+
+Existem apenas dois tipos de variaveis, as variaveis de String (conjunto de letras) e as variaveis numericas.
+
+>nul - Direciona a saida pra nulo, ou seja, esconde as coisas da tela.
+
+SET - Cria uma variavel.
+    set curso=Batch Script - cria a variavel curso com o valor Batch Script.
+    set /p curso=Digite Algo: - pergunta qual o valor que a variavel terá.
+
+
+ECHO %curso% - Vai escrever o valor da variavel na tela.
+
+Concatenação - Juntar duas ou mais strings.
+    set nome=David
+        set sobrenome=Kouadio
+        echo %nome% %sobrenome% (vai sair David Kouadio)
+            set nomeC=%nome% %sobrenome%
+            echo %nomeC% (vai sair David Kouadio tbm)
+
+            set /p "usuario=Usuario> "
+            set /p "senha=Senha> "
+            set dados=Usuario: %usuario% Senha: %senha%
+            echo %dados%
+    
+Substituição - substituir valores das variaveis.
+    set /p "usuario=Usuario> "
+        echo %usuario:a=x%
+
+Extração - Extrai valores especificos de variaveis.
+    set hora=%time%
+        echo %hora:~0,5%
+        echo %hora:~9,2% (a partir do 9 pega dois numeros)
+        echo %hora:~-2% (pega os 2 ultimos numeros)
+        echo %hora:~2% (pega todos os numeros a partir do 2)
+        echo %hora:~0,-2% (a partir do 0 pega todos os numeros menos os 2 ultimos)
+
+
+
+(Script básico)
+@echo off
+
+color 02
+mode 50,10
+
+title %date:/=-% - %time:~0,5%
+
+set /p name=Digite seu nome:
+set /p sobrenome=Digite seu sobrenome:
+set /p idade=Digite sua idade: 
+set /p sexo=Digite seu sexo:
+
+set nome_com=%nome% %sobrenome%
+
+cls
+
+echo.
+echo Coluna 01          Coluna 02
+echo.
+echo Nome:              %nome%   
+echo Sobrenome:         %sobrenome%
+echo Nome completo:     %nome_com%
+echo Idade:             %idade%     
+echo Sexo:              %sexo%
+
+Operadores aritimeticos-
+    Soma + 
+        set /a adi=2+2  (/a define o tipo da variavel para numerico)
+            echo 2+2= %adi%
+                set /a adi+= 2 (adiciona o 2 diretamente a variavel)
+
+    Subtração -
+        set /a sub=2-2
+            echo 2-2= %sub%
+                set /a sub-= 2 (subtrai o 2 diretamente a variavel)
+
+    Divisão /
+        set /a div=2/2
+            echo 2/2= %div%
+                set /a div/= 2 (divide o 2 diretamente a variavel)
+
+    Multiplicação *
+        set /a mul=2*2
+            echo 2*2= %mul%
+                set /a mul*= 2 (multiplica o 2 diretamente a variavel)
+
+    Modulo %
+        set /a mod=2%2
+            echo 2%%2= %mod%    (% é um caracter especial do batch por isso tem que colocar dois pra dizer que é divisão)
+                set /a mod%= 2 (modula o 2 diretamente a variavel)
+
+    Agrupamento ()
+        set /a agp=2+(2+2)
+    
+    Separador de expressões ,
+        set /a sdp1=1 , sdp2=2 , sdp3=3
+
+    Comentarios ::
+
+(Script básico - Calculadora)
+
+@echo off
+mode con: lines=5 cols=40
+color 06
+title Aula 04.2 - Calculadora
+
+echo.
+set /p "op=Digite o operador> "
+set /p "valor1=Digite o primeiro valor> "
+set /p "valor2=Digite o segundo valor> "
+
+set /a result=%valor1% %op% %valor2%
+
+cls
+echo. & echo. & echo.
+echo %valor1% %op% %valor2% = %result%
+echo.
+
+
+~~~~~~~~~~~~~~ErrorLevel~~~~~~~~~~~~~~~
+
+0 - Entrada de dados
+1- Saida de dados sem erro 
+2- Saida de dados com erro
+3 a 9 - Saida de dados personalizadas
+10... - codigos de erro
+
